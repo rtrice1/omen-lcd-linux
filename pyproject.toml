@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omen-lcd-linux"
+version = "0.1.0"
+description = "Display-only dashboard renderer and sensors for OMEN LCD work"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+dependencies = ["Pillow"]
+
+[project.scripts]
+omen-lcd = "omen_lcd.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["omen_lcd*"]

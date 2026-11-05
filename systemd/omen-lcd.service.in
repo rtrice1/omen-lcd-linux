@@ -1,0 +1,24 @@
+[Unit]
+Description=OMEN LCD Linux display service
+After=systemd-udevd.service
+StartLimitIntervalSec=120
+StartLimitBurst=3
+
+[Service]
+Type=simple
+User=@SERVICE_USER@
+Group=@SERVICE_GROUP@
+SupplementaryGroups=omenlcd
+WorkingDirectory=/opt/omen-lcd-linux
+ExecStart=/opt/omen-lcd-linux/venv/bin/omen-lcd run --interval 2
+Restart=on-failure
+RestartSec=10
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+PrivateDevices=no
+TimeoutStopSec=15
+
+[Install]
+WantedBy=multi-user.target
